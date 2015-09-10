@@ -61,7 +61,7 @@ public class GameGrid : MonoBehaviour {
 
 	void CallAnimations (int point, int pointsNumOfSequanceCoefficient)
 	{
-		if (points > 0) {
+		if (Time.timeSinceLevelLoad > 1) {
 
 			if(pointsNumOfSequanceCoefficient>0)
 			queueAnimations.Enqueue (pointsNumOfSequanceCoefficient);
@@ -89,6 +89,7 @@ public class GameGrid : MonoBehaviour {
 	
 	void ActivateSequencesAnimation ()
 	{
+		VibrationManager.Vibrate(800);
 
 		numOfSequensesForAnimation = queueAnimations.Dequeue ();
 		print ("numOfSequensesForAnimation " + numOfSequensesForAnimation);
@@ -123,7 +124,6 @@ public class GameGrid : MonoBehaviour {
 	
 	public  void ActivatePointsAnimation ()
 	{
-		if (score != 0) {
 			PointsAnimation pointsAnimation = Resources.Load<PointsAnimation> ("prefabs/AnimationPrefabs/PointsAnimation");
 	
 
@@ -132,8 +132,7 @@ public class GameGrid : MonoBehaviour {
 			pointsAnim = (PointsAnimation)Instantiate (pointsAnimation, new Vector3 (0, 0, 0), Quaternion.identity);
 			GameObject animationCanvas = GameObject.FindGameObjectWithTag ("AnimationCanvas");
 			pointsAnim.transform.parent = animationCanvas.transform;
-		}
-	}
+		}	
 	public  void ActivatePointsSound ()
 	{
 		SuctionSoundFX pointsSound=Resources.Load<SuctionSoundFX>("prefabs/SoundPrefabs/PointsSound");

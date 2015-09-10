@@ -73,7 +73,7 @@ public class ScrollManager : MonoBehaviour {
 		camera.transform.position = new Vector3 (camera.transform.position.x, Mathf.Clamp (camera.gameObject.transform.position.y,(numberOfEntries-5)*-0.25f , 0), 0); 
 
 		myCameraRigidbody2D.velocity=new Vector3 (0,- globalSlideMagnitudeY*10, 0);
-		header.transform.position = myCameraRigidbody2D.transform.position + new Vector3 (1.4f, 0.72f,0);
+		header.transform.position = myCameraRigidbody2D.transform.position + new Vector3 (1.4f, 0.76f,0);
 		yourScore.transform.position = myCameraRigidbody2D.transform.position + new Vector3 (-0f,0.34f,0);
 		panel.transform.position = myCameraRigidbody2D.transform.position + new Vector3 (-0f,-0.3f,0);
 		if(globalSlideMagnitudeY>0.0001f || globalSlideMagnitudeY<-0.0001f){

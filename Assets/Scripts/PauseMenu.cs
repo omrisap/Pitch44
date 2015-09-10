@@ -15,7 +15,7 @@ public class PauseMenu : MonoBehaviour {
 	}
 
 	public void Setlevel(string setLevel){
-		print ("ok");
+
 		level = setLevel;
 
 	}
@@ -40,6 +40,7 @@ public class PauseMenu : MonoBehaviour {
 
 		pauseMenu.gameObject.SetActive(false);
 		print ("level " + level);
+		print ("ok");
 			Application.LoadLevel(level);
 	}
 }

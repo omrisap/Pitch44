@@ -24,4 +24,6 @@ public class GridLeaderBoard : MonoBehaviour {
 			GetComponent<UIPanel>().alpha=0f;
 		}
 	}
+
+
 }

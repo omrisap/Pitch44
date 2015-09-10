@@ -64,6 +64,7 @@ public class LoginManager : MonoBehaviour {
 		//It never hurts to double check it you are logged into Facebook                
 		//before trying to log into GameSparks with Facebook
 		if (FB.IsLoggedIn) {
+			GameObject.Find("FacebookLeaderBoard").SetActive(false);
 			//This is the standard FacebookConnectRequest. This will                        
 			//log into GameSparks with your Facebook Profile.
 

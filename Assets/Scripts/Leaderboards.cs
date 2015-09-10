@@ -23,10 +23,64 @@ public class Leaderboards : MonoBehaviour
 		//children of the leaderboard grid
 		leaderboardGrid.Reposition();
 	}
+
+	public void GetLeaderboardForFriendsOnly(){
 	
+		for (int i = 0; i < entries.Count; i++) {
+			Destroy (entries [i]);
+		}
+	//	GameObject.Find ("Grid").GetComponent<GridLeaderBoard> ().RemoveAllEntries ();
+
+		new ListGameFriendsRequest().Send((response1) =>
+		  {
+
+			
+			foreach(var friend in response1.Friends){
+			print ("  friend.Id  " + friend.Id);
+				
+				new LeaderboardDataRequest_HighscoreLeaderboard ().SetEntryCount (10).Send ((response) => {
+					
+					//what we will do with the information given by GameSparks
+					
+					
+					foreach (var entry in response.Data) {
+						print ("entry.UserId " + entry.UserId + "  friend.Id  " + friend.Id);
+						if (entry.UserId==friend.Id){
+							GameObject go = NGUITools.AddChild (leaderboardGrid.gameObject, leaderboardEntryPrefab);
+							
+							go.GetComponent<LeaderboardEntry> ().rankString = entry.Rank.ToString ();
+							go.GetComponent<LeaderboardEntry> ().usernameString = entry.UserName.ToString ();
+							go.GetComponent<LeaderboardEntry> ().scoreString = entry.GetNumberValue ("Score").ToString ();
+							go.GetComponent<LeaderboardEntry> ().facebookID = entry.ExternalIds.GetString ("FB");
+							entries.Add (go);
+							
+
+							leaderboardGrid.Reposition ();
+						}
+
+					}
+
+				});
+			}
+
+
+
+		});	
+
+
+
+	}
+
+	public void GetAll(){
+
+		caledToGetLeaderBoard = false;
+		GetLeaderboard ();
+
+	}
+
 	public void GetLeaderboard()
 	{
-
+		//GameObject.Find ("Grid").GetComponent<GridLeaderBoard> ().RemoveAllEntries ();
 		if (caledToGetLeaderBoard == false) {
 			PostScores ("", PlayerPrefsManager.GetHighestScore ());
 			//the leaderboard entries could contain old data. 

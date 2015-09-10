@@ -61,27 +61,30 @@ public class GameGrid : MonoBehaviour {
 
 	void CallAnimations (int point, int pointsNumOfSequanceCoefficient)
 	{
-		if(pointsNumOfSequanceCoefficient>0)
-		queueAnimations.Enqueue (pointsNumOfSequanceCoefficient);
-		score=point;
+		if (points > 0) {
 
-		if(pointsNumOfSequanceCoefficient==1){
-			Invoke("ActivateSequencesAnimation",0.1f);
+			if(pointsNumOfSequanceCoefficient>0)
+			queueAnimations.Enqueue (pointsNumOfSequanceCoefficient);
+			score=point;
+
+			if(pointsNumOfSequanceCoefficient==1){
+				Invoke("ActivateSequencesAnimation",0.1f);
+			}
+			if(pointsNumOfSequanceCoefficient==2){
+				Invoke("ActivateSequencesAnimation",1.2f);
+			}
+			if(pointsNumOfSequanceCoefficient==3){
+				Invoke("ActivateSequencesAnimation",2f);
+			}
+			if(pointsNumOfSequanceCoefficient==4){
+				Invoke("ActivateSequencesAnimation",3f);
+			}
+			if(pointsNumOfSequanceCoefficient==5){
+				Invoke("ActivateSequencesAnimation",4f);
+			}
+			ActivatePointsAnimation ();
+			ActivatePointsSound ();
 		}
-		if(pointsNumOfSequanceCoefficient==2){
-			Invoke("ActivateSequencesAnimation",1.2f);
-		}
-		if(pointsNumOfSequanceCoefficient==3){
-			Invoke("ActivateSequencesAnimation",2f);
-		}
-		if(pointsNumOfSequanceCoefficient==4){
-			Invoke("ActivateSequencesAnimation",3f);
-		}
-		if(pointsNumOfSequanceCoefficient==5){
-			Invoke("ActivateSequencesAnimation",4f);
-		}
-		ActivatePointsAnimation ();
-		ActivatePointsSound ();
 	}
 	
 	void ActivateSequencesAnimation ()
@@ -120,15 +123,16 @@ public class GameGrid : MonoBehaviour {
 	
 	public  void ActivatePointsAnimation ()
 	{
-
-		PointsAnimation pointsAnimation=Resources.Load<PointsAnimation>("prefabs/AnimationPrefabs/PointsAnimation");
+		if (score != 0) {
+			PointsAnimation pointsAnimation = Resources.Load<PointsAnimation> ("prefabs/AnimationPrefabs/PointsAnimation");
 	
 
-		pointsAnimation.PointsTextController.text = "+"+ score.ToString ();
+			pointsAnimation.PointsTextController.text = "+" + score.ToString ();
 
-		pointsAnim=(PointsAnimation)Instantiate(pointsAnimation,new Vector3(0,0,0),Quaternion.identity);
-		GameObject animationCanvas =GameObject.FindGameObjectWithTag ("AnimationCanvas");
-		pointsAnim.transform.parent = animationCanvas.transform;
+			pointsAnim = (PointsAnimation)Instantiate (pointsAnimation, new Vector3 (0, 0, 0), Quaternion.identity);
+			GameObject animationCanvas = GameObject.FindGameObjectWithTag ("AnimationCanvas");
+			pointsAnim.transform.parent = animationCanvas.transform;
+		}
 	}
 	public  void ActivatePointsSound ()
 	{
@@ -452,6 +456,8 @@ public class GameGrid : MonoBehaviour {
 	
 	public static void DestroyBallInGrid (int x, int y)
 	{
+		VibrationManager.Vibrate(30);
+
 		InstanciatExplotionAnimation(x,y);
 		Destroy(grid[x,y].gameObject);
 

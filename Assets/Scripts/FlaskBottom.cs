@@ -25,7 +25,8 @@ public class FlaskBottom : MonoBehaviour {
 		} 
 		if (flask.gameObject.tag == "menuBall") {
 			ClinkSound clinkSound = Resources.Load<ClinkSound> ("prefabs/SoundPrefabs/ClinkSound");
-			Instantiate(clinkSound);
+			ClinkSound soungMovesToNextScene= Instantiate(clinkSound).GetComponent<ClinkSound>();
+			print (soungMovesToNextScene);
 		}
 		
 		

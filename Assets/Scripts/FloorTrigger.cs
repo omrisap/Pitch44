@@ -17,19 +17,23 @@ public class FloorTrigger : MonoBehaviour {
 	
 	// Update is called once per frame
 	public void LoadLevel (string name) {
-			
+		ClinkSound clinkSound = Resources.Load<ClinkSound> ("prefabs/SoundPrefabs/ClinkSound");
+		Instantiate(clinkSound);
 
+		VibrationManager.Vibrate(40);
 		if(!isTouchEnabledFirstTime){
 			// load Pause Screen
 			pauseScreen.SetActive (true);
 			pauseScreen.gameObject.SetActive(true);
 			Time.timeScale = 0;
 
+
 			}
 			else{
 			//
 			if(isTouchEnabledallways){
-			Application.LoadLevel(name);
+				Application.LoadLevel(name);
+
 			}
 		
 		}

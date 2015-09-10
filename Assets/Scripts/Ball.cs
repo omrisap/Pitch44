@@ -43,6 +43,7 @@ public class Ball : MonoBehaviour {
 			float WidthOfBar = bar.GetComponent<BoxCollider2D> ().size.x;
 
 			if(moveBallWithVoice){
+
 				float currentPitch=Controller.x ;
 				
 				speed=0;
@@ -238,13 +239,14 @@ public class Ball : MonoBehaviour {
 	
 			
 	private void LoseTheGame(){
-	
-		levleManager.LoadLevel("Leaderboard");
 		if (GameGrid.points > PlayerPrefsManager.GetHighestScore()) {
-
+			
 			PlayerPrefsManager.SetHighestScore(GameGrid.points);
-		
+			
 		}
+		GameGrid.points = 0;
+		levleManager.LoadLevel("Leaderboard");
+
 
 	}
 	void Destruct(){

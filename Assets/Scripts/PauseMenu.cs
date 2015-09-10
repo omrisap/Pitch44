@@ -17,6 +17,8 @@ public class PauseMenu : MonoBehaviour {
 		FloorTrigger.isTouchEnabledFirstTime = true;
 		Time.timeScale = 1;
 		GameObject pauseMenu =GameObject.Find("PauseScreen") ;
+		VibrationManager.Vibrate(40);
+
 		pauseMenu.gameObject.SetActive(false);
 
 	}
@@ -26,6 +28,8 @@ public class PauseMenu : MonoBehaviour {
 		FloorTrigger.isTouchEnabledallways = true;
 		Time.timeScale = 1;
 		GameObject pauseMenu =GameObject.Find("PauseScreen") ;
+		VibrationManager.Vibrate(40);
+
 		pauseMenu.gameObject.SetActive(false);
 
 

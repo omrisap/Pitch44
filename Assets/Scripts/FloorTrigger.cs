@@ -14,6 +14,17 @@ public class FloorTrigger : MonoBehaviour {
 
 
 	}
+
+	public void Mute(){
+		PlayerPrefsManager.SetVolumeIsOn(1-PlayerPrefsManager.GetVolumeIsOn());
+		
+		AudioListener.volume = 1-AudioListener.volume;
+		
+		
+		Application.LoadLevel ("Settings");
+
+
+	}
 	
 	// Update is called once per frame
 	public void LoadLevel (string name) {
@@ -23,10 +34,12 @@ public class FloorTrigger : MonoBehaviour {
 		VibrationManager.Vibrate(40);
 		if(!isTouchEnabledFirstTime){
 			// load Pause Screen
+
 			pauseScreen.SetActive (true);
+
 			pauseScreen.gameObject.SetActive(true);
 			Time.timeScale = 0;
-
+			GameObject.Find("PauseController").GetComponent<PauseMenu>().Setlevel(name);
 
 			}
 			else{
@@ -68,12 +81,7 @@ public class FloorTrigger : MonoBehaviour {
 		}
 		if(flask.gameObject.tag =="Mute"){
 	
-			PlayerPrefsManager.SetVolumeIsOn(1-PlayerPrefsManager.GetVolumeIsOn());
-		
-				AudioListener.volume = 1-AudioListener.volume;
-
-
-			Application.LoadLevel ("Settings");
+			Mute();
 
 		}
 		if (Application.loadedLevelName == "SetUserPitch") {

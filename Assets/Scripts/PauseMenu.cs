@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PauseMenu : MonoBehaviour {
 
-	// Use this for initialization
+	private string level;
 	void Start () {
 
 
@@ -13,6 +13,14 @@ public class PauseMenu : MonoBehaviour {
 	void Update () {
 	
 	}
+
+	public void Setlevel(string setLevel){
+		print ("ok");
+		level = setLevel;
+
+	}
+
+
 	public void OkayGotIt(){
 		FloorTrigger.isTouchEnabledFirstTime = true;
 		Time.timeScale = 1;
@@ -31,7 +39,7 @@ public class PauseMenu : MonoBehaviour {
 		VibrationManager.Vibrate(40);
 
 		pauseMenu.gameObject.SetActive(false);
-
-
+		print ("level " + level);
+			Application.LoadLevel(level);
 	}
 }

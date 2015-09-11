@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using GameSparks.Api.Requests;
+using Facebook.MiniJSON;
+using Facebook;
 
 //the prefab we are going to instantiate 
 public class Leaderboards : MonoBehaviour
@@ -24,8 +27,36 @@ public class Leaderboards : MonoBehaviour
 		leaderboardGrid.Reposition();
 	}
 
-	public void GetLeaderboardForFriendsOnly(){
+
+	void OnFriendsDownloaded(FBResult result) {
+
+		if (result.Error != null) {
+			Debug.LogError("Error getting FB friends: " + result.Error);
+		}
+		else {
 	
+			Dictionary<string, object> responseObject = Facebook.MiniJSON.Json.Deserialize(result.Text) as Dictionary<string, object>;            
+			StartCoroutine(GetFriendsFacebookUserInfo(responseObject["data"] as List<object>));
+		}
+	}
+
+	IEnumerator GetFriendsFacebookUserInfo(List<object> responseDataObjects) {
+		int numFriends = responseDataObjects.Count;
+		print ("numFriends" + numFriends);
+		GameObject.Find("Text4test").GetComponent<Text>().text=numFriends.ToString();
+		foreach (object friendDataObject in responseDataObjects) {
+			Dictionary<string, object> friendDataObjectDict = friendDataObject as Dictionary<string, object>;
+			print ("count " + friendDataObjectDict.Count);
+			yield return null;
+
+			}
+
+		}
+
+
+	public void GetLeaderboardForFriendsOnly(){
+		FB.API("/v2.1/me/friends", Facebook.HttpMethod.GET, OnFriendsDownloaded);
+
 		for (int i = 0; i < entries.Count; i++) {
 			Destroy (entries [i]);
 		}
@@ -34,7 +65,7 @@ public class Leaderboards : MonoBehaviour
 		new ListGameFriendsRequest().Send((response1) =>
 		  {
 
-			
+
 			foreach(var friend in response1.Friends){
 			print ("  friend.Id  " + friend.Id);
 				

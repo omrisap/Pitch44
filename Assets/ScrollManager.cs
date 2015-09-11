@@ -6,7 +6,7 @@ public class ScrollManager : MonoBehaviour {
 	public GameObject header;
 	public GameObject grid;
 	public GameObject yourScore;
-	public GameObject panel;
+
 
 
 
@@ -75,7 +75,7 @@ public class ScrollManager : MonoBehaviour {
 		myCameraRigidbody2D.velocity=new Vector3 (0,- globalSlideMagnitudeY*10, 0);
 		header.transform.position = myCameraRigidbody2D.transform.position + new Vector3 (1.4f, 0.76f,0);
 		yourScore.transform.position = myCameraRigidbody2D.transform.position + new Vector3 (-0f,0.34f,0);
-		panel.transform.position = myCameraRigidbody2D.transform.position + new Vector3 (-0f,-0.3f,0);
+
 		if(globalSlideMagnitudeY>0.0001f || globalSlideMagnitudeY<-0.0001f){
 			globalSlideMagnitudeY=globalSlideMagnitudeY-globalSlideMagnitudeYTemp*stopRate;
 		}

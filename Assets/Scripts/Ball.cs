@@ -8,7 +8,7 @@ public class Ball : MonoBehaviour {
 	public Bar bar;
 	private int xPosition=9999;
 	private int yPosition=9999;
-	private bool moveBallWithVoice=true;
+	private bool moveBallWithVoice=false;
 	private LevelManager levleManager;
 	public Rigidbody2D rigidbody2d;
 	public float middlePitch;

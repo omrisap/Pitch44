@@ -27,7 +27,7 @@ public class Leaderboards : MonoBehaviour
 		leaderboardGrid.Reposition();
 	}
 
-
+	/*
 	void OnFriendsDownloaded(FBResult result) {
 
 		if (result.Error != null) {
@@ -108,10 +108,10 @@ public class Leaderboards : MonoBehaviour
 		GetLeaderboard ();
 
 	}
-
+*/
 	public void GetLeaderboard()
 	{
-		//GameObject.Find ("Grid").GetComponent<GridLeaderBoard> ().RemoveAllEntries ();
+
 		if (caledToGetLeaderBoard == false) {
 			PostScores ("", PlayerPrefsManager.GetHighestScore ());
 			//the leaderboard entries could contain old data. 

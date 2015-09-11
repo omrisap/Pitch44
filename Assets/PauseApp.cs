@@ -8,8 +8,10 @@
 
 			public GameObject pitchRecognitionControllerPreFab;
 			void Start () {
+			if (Application.loadedLevelName == "GAME") {
 				PauseGameScreen = GameObject.Find ("PauseGameScreen");
 				PauseGameScreen.SetActive (false);
+				}
 			}
 
 			// Update is called once per frame

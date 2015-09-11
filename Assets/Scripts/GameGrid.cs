@@ -33,10 +33,16 @@ public class GameGrid : MonoBehaviour {
 		textPoints= GameObject.Find("PointsPanel").transform.GetChild(0).gameObject.GetComponent<Text>();
 		GameObject barInstance = GameObject.FindGameObjectWithTag ("Bars");
 		numberOfColoumns = barInstance.transform.childCount;
+		Screen.sleepTimeout = SleepTimeout.NeverSleep;
+		points = 0;
 		
 	}
 
 	void Update(){
+		if (Time.timeSinceLevelLoad < 2) {
+
+			points=0;
+		}
 		textPoints.text= " Score: "+ points.ToString();
 		if (destroyd > 0) {
 			print ("destroyd " + destroyd);

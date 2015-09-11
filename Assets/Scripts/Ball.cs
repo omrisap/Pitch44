@@ -70,7 +70,7 @@ public class Ball : MonoBehaviour {
 					transform.position += Vector3.left * 20 * Time.deltaTime;
 				}
 			}
-			if( Application.loadedLevelName=="Settings"){
+			if( Application.loadedLevelName=="Settings" || Application.loadedLevelName=="Options"){
 				transform.position = new Vector3 (Mathf.Clamp (transform.position.x, 0 + WidthOfBar, 25.5f), transform.position.y, transform.position.z);
 
 			}

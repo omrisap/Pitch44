@@ -49,6 +49,7 @@ public class Ball : MonoBehaviour {
 				speed=0;
 			
 				if (currentPitch> 0 && (currentPitch>(1.1*middlePitch) || currentPitch<(0.9*middlePitch)) ) {
+					print ("currentPitch  " + currentPitch);
 					if(constantBallSpeed){
 						speed=-1*restrictedSpeedValue*Mathf.Sign((currentPitch - middlePitch));
 					}

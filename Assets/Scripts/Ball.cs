@@ -253,7 +253,7 @@ public class Ball : MonoBehaviour {
 			PlayerPrefsManager.SetHighestScore(GameGrid.points);
 
 		}
-		GameGrid.points = 0;
+
 		levleManager.LoadLevel("Leaderboard");
 
 

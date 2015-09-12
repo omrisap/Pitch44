@@ -14,7 +14,7 @@ public class GameGrid : MonoBehaviour {
 	public static Ball[,] grid = new Ball[numberOfPipes, NumberOfRowes];
 	//private static int x,y;
 	//	private static Vector4 color;
-	public static int points = 0;
+	public static int points;
 	private static Text textPoints;
 	public static int destroyd = 0;
 	private static int pointsTypeOfSequanceCoefficient;

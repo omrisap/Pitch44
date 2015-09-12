@@ -11,7 +11,7 @@
 			void Start () {
 			if (Application.loadedLevelName == "GAME") {
 				PauseGameScreen = GameObject.Find ("PauseGameScreen");
-				PauseGameScreen.SetActive (false);
+             	PauseGameScreen.SetActive (false);
 				}
 			}
 

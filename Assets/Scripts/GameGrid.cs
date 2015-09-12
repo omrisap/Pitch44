@@ -156,7 +156,10 @@ public class GameGrid : MonoBehaviour {
 	
 	
 	
-
+	
+	public static int GetPoints (){
+		return points;
+	}
 	
 	public static void AddPoints (int pointsToAdd){
 		points=points+pointsToAdd;

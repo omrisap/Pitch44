@@ -6,6 +6,7 @@ public class ScrollManager : MonoBehaviour {
 	public GameObject header;
 	public GameObject grid;
 	public GameObject yourScore;
+	public GameObject higeScore;
 
 
 
@@ -74,8 +75,10 @@ public class ScrollManager : MonoBehaviour {
 
 		myCameraRigidbody2D.velocity=new Vector3 (0,- globalSlideMagnitudeY*10, 0);
 		header.transform.position = myCameraRigidbody2D.transform.position + new Vector3 (1.4f, 0.76f,0);
-		yourScore.transform.position = myCameraRigidbody2D.transform.position + new Vector3 (-0f,0.34f,0);
-
+		yourScore.transform.position = myCameraRigidbody2D.transform.position + new Vector3 (-1f,0.38f,0);
+		higeScore.transform.position = myCameraRigidbody2D.transform.position + new Vector3 (0.8f,0.38f,0);
+		yourScore.GetComponent<UILabel> ().text = "Your Score " + GameGrid.GetPoints ();
+		higeScore.GetComponent<UILabel> ().text = "High Score " + PlayerPrefsManager.GetHighestScore();
 		if(globalSlideMagnitudeY>0.0001f || globalSlideMagnitudeY<-0.0001f){
 			globalSlideMagnitudeY=globalSlideMagnitudeY-globalSlideMagnitudeYTemp*stopRate;
 		}

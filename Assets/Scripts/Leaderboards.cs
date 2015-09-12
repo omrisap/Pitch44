@@ -30,14 +30,16 @@ public class Leaderboards : MonoBehaviour
 	public void GetLeaderboard()
 	{
 
+
 		if (caledToGetLeaderBoard == false) {
+		
 			PostScores ("", PlayerPrefsManager.GetHighestScore ());
 			//the leaderboard entries could contain old data. 
 			//First destroy all existing Leaderboard objects
 			for (int i = 0; i < entries.Count; i++) {
 				Destroy (entries [i]);
 			}
-		
+
 			//because we deleted the objects contained on the list, the list                //now contains nul references and has to be cleared so the new 
 			//high score objects can be added
 			entries.Clear ();
@@ -50,8 +52,9 @@ public class Leaderboards : MonoBehaviour
 
 				//what we will do with the information given by GameSparks
 		
-
+		
 					foreach (var entry in response.Data) {
+
 					//only children of the NGUI grid will be added 
 					//to the grid. We make new objects with our
 					//LeaderboardEntry script and add them as 

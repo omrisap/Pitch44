@@ -47,16 +47,6 @@ public class LoginManager : MonoBehaviour {
 
 
 
-	
-
-
-
-
-
-
-
-
-
 	//GameSparksLogin takes FBResult from FB.Login but we don't use it 
 	//for anything
 	public void GameSparksLogin(FBResult result) 

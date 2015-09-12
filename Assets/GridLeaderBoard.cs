@@ -4,7 +4,7 @@ using System.Collections;
 
 public class GridLeaderBoard : MonoBehaviour {
 
-	// Use this for initialization
+	public GameObject facebookLeaderBoard;
 
 	void Start () {
 		FB.Init (Update);
@@ -14,13 +14,13 @@ public class GridLeaderBoard : MonoBehaviour {
 	void Update () {
 
 		if (FB.IsLoggedIn) {
-			GameObject.Find("Text").GetComponent<Text>().text="loggedin";
+			facebookLeaderBoard.SetActive(false);
 			GetComponent<UIPanel> ().alpha = 1;
 			Leaderboards leaderboard = GameObject.Find ("Leaderboard").GetComponent<Leaderboards> ();
 			leaderboard.GetLeaderboard ();
 
 		} else  {
-			GameObject.Find("Text").GetComponent<Text>().text="loggedout";
+	
 			GetComponent<UIPanel>().alpha=0f;
 		}
 	}

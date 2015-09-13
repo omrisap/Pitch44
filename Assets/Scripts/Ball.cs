@@ -31,6 +31,7 @@ public class Ball : MonoBehaviour {
 
 
 		rigidbody2d.velocity=new Vector3 (0,-3 -Time.timeSinceLevelLoad*0.01f ,0);
+		if(!this.name.Contains("MainMenu"))
 		ballColor = GetComponent<SpriteRenderer>().color;
 		levleManager = FindObjectOfType<LevelManager>();
 		middlePitch=(PlayerPrefsManager.GetHighestPitch()+PlayerPrefsManager.GetLowhestPitch())/2;

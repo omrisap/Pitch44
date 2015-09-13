@@ -73,10 +73,10 @@ public class ScrollManager : MonoBehaviour {
 		
 
 		}
-		numberOfEntries = 7;// grid.transform.childCount;
+		numberOfEntries = grid.transform.childCount;
 
 		Rigidbody2D myCameraRigidbody2D= camera.GetComponent<Rigidbody2D>();
-		camera.transform.position = new Vector3 (camera.transform.position.x, Mathf.Clamp (camera.gameObject.transform.position.y,(numberOfEntries-5)*-0.25f , 0), 0); 
+		camera.transform.position = new Vector3 (camera.transform.position.x, Mathf.Clamp (camera.gameObject.transform.position.y,(numberOfEntries-4)*-0.25f , 0), 0); 
 
 		myCameraRigidbody2D.velocity=new Vector3 (0,- globalSlideMagnitudeY*10, 0);
 //		header.transform.position = myCameraRigidbody2D.transform.position + new Vector3 (1.4f, 0.76f,0);
@@ -94,7 +94,7 @@ public class ScrollManager : MonoBehaviour {
 			globalSlideMagnitudeY=globalSlideMagnitudeY-globalSlideMagnitudeYTemp*stopRate;
 		}
 
-		grid.transform.position =transform.TransformPoint(new Vector3 (-0.07f,0,0));  //-  panel.transform.position	;
+		grid.transform.position =transform.TransformPoint(new Vector3 (-0.07f,0.1f,0));  //-  panel.transform.position	;
 
 
 

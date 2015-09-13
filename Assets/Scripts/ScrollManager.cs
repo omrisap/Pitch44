@@ -6,7 +6,7 @@ public class ScrollManager : MonoBehaviour {
 	public GameObject header;
 	public GameObject grid;
 	public GameObject yourScore;
-
+	public GameObject panel;
 
 
 
@@ -79,11 +79,12 @@ public class ScrollManager : MonoBehaviour {
 		camera.transform.position = new Vector3 (camera.transform.position.x, Mathf.Clamp (camera.gameObject.transform.position.y,(numberOfEntries-5)*-0.25f , 0), 0); 
 
 		myCameraRigidbody2D.velocity=new Vector3 (0,- globalSlideMagnitudeY*10, 0);
-		header.transform.position = myCameraRigidbody2D.transform.position + new Vector3 (1.4f, 0.76f,0);
+//		header.transform.position = myCameraRigidbody2D.transform.position + new Vector3 (1.4f, 0.76f,0);
 
+		panel.transform.position = myCameraRigidbody2D.transform.position + new Vector3 (0f,0f,0);
 
-		yourScore.transform.position = myCameraRigidbody2D.transform.position + new Vector3 (-1f,0.38f,0);
-		higeScore.transform.position = myCameraRigidbody2D.transform.position + new Vector3 (0.8f,0.38f,0);
+//		yourScore.transform.position = myCameraRigidbody2D.transform.position + new Vector3 (-1f,0.38f,0);
+//		higeScore.transform.position = myCameraRigidbody2D.transform.position + new Vector3 (0.8f,0.38f,0);
 		yourScore.GetComponent<UILabel> ().text = "Your Score " + GameGrid.GetPoints ();
 		higeScore.GetComponent<UILabel> ().text = "High Score " + PlayerPrefsManager.GetHighestScore();
 
@@ -93,7 +94,7 @@ public class ScrollManager : MonoBehaviour {
 			globalSlideMagnitudeY=globalSlideMagnitudeY-globalSlideMagnitudeYTemp*stopRate;
 		}
 
-		grid.transform.position =transform.TransformPoint(new Vector3 (0,0,0));  //-  panel.transform.position	;
+		grid.transform.position =transform.TransformPoint(new Vector3 (-0.07f,0,0));  //-  panel.transform.position	;
 
 
 

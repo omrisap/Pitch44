@@ -10,12 +10,14 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	public void LoadLevel(string name){
-		
+		VibrationManager.Vibrate(40);
+
 		Application.LoadLevel (name);
 	}
 
 	public void QuitRequest(){
-		
+		VibrationManager.Vibrate(40);
+
 		Application.Quit ();
 	}
 	

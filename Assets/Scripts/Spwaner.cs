@@ -5,17 +5,18 @@ public class Spwaner : MonoBehaviour {
 	public Ball preFarbBall;
 	private Vector4[] colorsArray;
 	private static int countCallForSpwan=0;
+	public Sprite[] eyes;
 	void Start () {
 
 		PlayerPrefsManager.SetIsFirstTime (1);
-
+		 
 		colorsArray = new Vector4[5];
 		colorsArray [0] = new Vector4 (1, 0.92f, 0.016f, 1);
 		colorsArray [1] = new Vector4 (1, 0, 0, 1);
-		colorsArray [2] = new Vector4 (0, 1, 0, 1);
-		colorsArray [3] = new Vector4 (0.5f, 0.5f, 0.5f, 1);
-		colorsArray [4] = new Vector4 (1, 0, 1, 1);
-
+		colorsArray [2] = new Vector4 (0, 0, 1, 1);
+		colorsArray [3] = new Vector4 (1, 0, 1, 1);
+		colorsArray [4] = new Vector4 (0, 1, 0, 1);
+		
 
 		Invoke("Spwan",2);   
 		if (PlayerPrefsManager.GetVolumeIsOn () == 0) {
@@ -101,8 +102,20 @@ public class Spwaner : MonoBehaviour {
 			Transform origin = this.gameObject.transform.GetChild (rand);
 			
 			Ball ball = (Ball) Instantiate (preFarbBall, origin.position, Quaternion.identity);
-			
-			ball.GetComponent<SpriteRenderer> ().color = colorsArray[Random.Range(0,2)];
+			int randColorAndEyes = Random.Range (0, 3);
+			ball.transform.GetChild (0).GetComponent<SpriteRenderer> ().sprite = eyes [randColorAndEyes];
+
+		//For eran
+//			if (randColorAndEyes=0)(
+//				ball.transform.GetChild (0).transform=
+//			)
+//			if (randColorAndEyes=1)(
+//				ball.transform.GetChild (0).transform=
+//				)
+
+
+
+			ball.GetComponent<SpriteRenderer> ().color = colorsArray[randColorAndEyes];
 		
 			ball.transform.parent = origin.transform;
 			

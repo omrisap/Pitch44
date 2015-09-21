@@ -37,4 +37,9 @@ public class PauseGameScreen : MonoBehaviour {
 		Time.timeScale=0;
 
 	}
+
+	public void ToMainMenu(){
+		Time.timeScale=1;
+		
+	}
 }

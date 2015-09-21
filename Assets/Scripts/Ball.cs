@@ -30,7 +30,7 @@ public class Ball : MonoBehaviour {
 		//	rigidbody2d.rigidbody.freezeRotation;
 
 
-		rigidbody2d.velocity=new Vector3 (0,-3 -Time.timeSinceLevelLoad*0.01f ,0);
+		rigidbody2d.velocity=new Vector3 (0,-2f -Time.timeSinceLevelLoad*0.002f ,0);
 		if(!this.name.Contains("MainMenu"))
 		ballColor = GetComponent<SpriteRenderer>().color;
 		levleManager = FindObjectOfType<LevelManager>();

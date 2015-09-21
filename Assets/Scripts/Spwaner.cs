@@ -17,7 +17,7 @@ public class Spwaner : MonoBehaviour {
 		colorsArray [4] = new Vector4 (1, 0, 1, 1);
 
 
-		Invoke("Spwan",3.2f);   
+		Invoke("Spwan",2);   
 		if (PlayerPrefsManager.GetVolumeIsOn () == 0) {
 			AudioListener.volume = 1 - AudioListener.volume;
 			Invoke ("ReturnSound", 3);
@@ -92,7 +92,7 @@ public class Spwaner : MonoBehaviour {
 
 	}*/
 	public void Spwan(){
-		Invoke("Spwan",3.2f);   
+		Invoke("Spwan",4.5f -Time.timeSinceLevelLoad*0.002f);   
 		
 		
 			int rand;

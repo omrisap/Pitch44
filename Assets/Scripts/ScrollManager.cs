@@ -7,7 +7,7 @@ public class ScrollManager : MonoBehaviour {
 	public GameObject grid;
 	public GameObject yourScore;
 	public GameObject panel;
-
+	public GameObject newHighScore;
 
 
 
@@ -28,8 +28,15 @@ public class ScrollManager : MonoBehaviour {
 	private float stopRate=0.02f;
 	private float speedPower=0.6f;
 
+	void Start(){
+
+		if (GameGrid.GetPoints () >= PlayerPrefsManager.GetHighestScore ()) {
+			Instantiate(newHighScore);
+		}
+	}
 
 	void Update(){
+
 		if (Input.touchCount == 1) {
 			Touch touch = Input.GetTouch (0);
 		
@@ -85,6 +92,7 @@ public class ScrollManager : MonoBehaviour {
 
 //		yourScore.transform.position = myCameraRigidbody2D.transform.position + new Vector3 (-1f,0.38f,0);
 //		higeScore.transform.position = myCameraRigidbody2D.transform.position + new Vector3 (0.8f,0.38f,0);
+	
 		yourScore.GetComponent<UILabel> ().text = "Your Score " + GameGrid.GetPoints ();
 		higeScore.GetComponent<UILabel> ().text = "High Score " + PlayerPrefsManager.GetHighestScore();
 

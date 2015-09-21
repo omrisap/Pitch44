@@ -32,4 +32,9 @@ public class PauseGameScreen : MonoBehaviour {
 		
 		
 	}
+
+	public void PauseTheGame(){
+		Time.timeScale=0;
+
+	}
 }

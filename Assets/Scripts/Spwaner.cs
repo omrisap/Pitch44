@@ -105,13 +105,27 @@ public class Spwaner : MonoBehaviour {
 			int randColorAndEyes = Random.Range (0, 3);
 			ball.transform.GetChild (0).GetComponent<SpriteRenderer> ().sprite = eyes [randColorAndEyes];
 
-		//For eran
-//			if (randColorAndEyes=0)(
+			if (randColorAndEyes==0){
+			//Yellow Strech
+
+			ball.transform.GetChild (0).transform.localScale+=new Vector3 (0.1f,0.3f,0);
+			//Yellow position
+
+			ball.transform.GetChild (0).transform.position+=new Vector3 (0.1f,0f,0);
+
+		}
+		if (randColorAndEyes==1){
+			//red Strech
+
+			ball.transform.GetChild (0).transform.localScale+=new Vector3 (0.05f,0.09f,0);
+			//red position
+
+			ball.transform.GetChild (0).transform.position+=new Vector3 (0f,-0.1f,0);
+			
+		}
+//			if (randColorAndEyes=1){
 //				ball.transform.GetChild (0).transform=
-//			)
-//			if (randColorAndEyes=1)(
-//				ball.transform.GetChild (0).transform=
-//				)
+//		}
 
 
 

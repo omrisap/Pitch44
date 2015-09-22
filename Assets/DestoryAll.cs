@@ -7,7 +7,7 @@ public class DestoryAll : MonoBehaviour {
 	void Start () {
 		Time.timeScale = 2f;
 		Invoke ("TurnOn", 5);
-		Invoke ("Finish", 12);
+		Invoke ("Finish", 10.5f);
 	}
 	
 	void TurnOn(){

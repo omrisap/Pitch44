@@ -29,7 +29,6 @@ public class ScrollManager : MonoBehaviour {
 	private float speedPower=0.6f;
 
 	void Start(){
-
 		if (GameGrid.GetPoints () >= PlayerPrefsManager.GetHighestScore ()) {
 			Instantiate(newHighScore);
 		}

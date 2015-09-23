@@ -20,7 +20,7 @@ public class Controller : MonoBehaviour {
 	public int pitchTimeInterval=100; 					//Millisecons needed to detect tone
 	private float refValue = 0.1f; 						// RMS value for 0 dB
 	public float minVolumeDB=-25f;						//Min volume in bd needed to start detection
-	
+	public bool micIsOn=true;
 	private int currentDetectedNote =0;					//Las note detected (midi number)
 	private string currentDetectedNoteName;				//Note name in modern notation (C=Do, D=Re, etc..)
 	
@@ -138,13 +138,18 @@ public class Controller : MonoBehaviour {
 				x=0;
 				return;
 			}
-			
-			pitchDetector.DetectPitch (data);
-			int midiant = pitchDetector.lastMidiNote ();
-			int midi = findMode();
-			x=pitchDetector.lastFrequency();
-			detectionsMade [detectionPointer++] = midiant;
-			detectionPointer %= cumulativeDetections;
+			if(micIsOn){
+				pitchDetector.DetectPitch (data);
+				int midiant = pitchDetector.lastMidiNote ();
+				int midi = findMode();
+				x=pitchDetector.lastFrequency();
+				detectionsMade [detectionPointer++] = midiant;
+				detectionPointer %= cumulativeDetections;
+			}
+			else
+			{
+				x=0;
+			}
 
 			
 		}
@@ -169,11 +174,11 @@ public class Controller : MonoBehaviour {
 		
 		
 	}
-	public void MoveBallRight(Ball ball){
-
+	public void TurnOfMic(){
+		micIsOn = false;
 	}
-	public void MoveBallLeft(Ball ball){
-		
+	public void TurnOnMic(){
+		micIsOn = true;
 	}
 	
 /*	void setUpScorePosition() {

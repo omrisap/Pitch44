@@ -5,7 +5,7 @@ public class SetFirstSetting : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		Time.timeScale=1;
 		if (PlayerPrefsManager.GetIsFirstTime() == 0) {
 
 			PlayerPrefsManager.SetHighestPitch (380);

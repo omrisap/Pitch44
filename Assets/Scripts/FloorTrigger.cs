@@ -83,7 +83,7 @@ public class FloorTrigger : MonoBehaviour {
 			Application.LoadLevel ("Leaderboard");
 		}
 		if(flask.gameObject.tag =="HowToPlay"){
-			Application.LoadLevel ("Instructions");
+			Application.LoadLevel ("HowToPlayInterActive");
 		}
 		if(flask.gameObject.tag =="Mute"){
 	

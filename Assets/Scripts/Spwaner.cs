@@ -8,7 +8,7 @@ public class Spwaner : MonoBehaviour {
 	public Sprite[] eyes;
 	void Start () {
 
-		PlayerPrefsManager.SetIsFirstTime (1);
+
 		 
 		colorsArray = new Vector4[5];
 		colorsArray [0] = new Vector4 (1, 0.92f, 0.016f, 1);

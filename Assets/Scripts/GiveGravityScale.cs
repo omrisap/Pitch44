@@ -30,6 +30,12 @@ public class GiveGravityScale : MonoBehaviour {
 
 	}
 	void SplashLoadLevel (){
-		Application.LoadLevel ("HowToPlayInterActive");
+		if (PlayerPrefsManager.GetIsFirstTime () == 0) {
+
+			Application.LoadLevel ("HowToPlayInterActive");
+			PlayerPrefsManager.SetIsFirstTime (1);
+		}
+		else
+			Application.LoadLevel("MainMenu");
 	}
 }

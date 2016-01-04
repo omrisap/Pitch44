@@ -59,14 +59,11 @@ public class FloorTrigger : MonoBehaviour {
 		if (flask.gameObject.tag =="BackButton" && Application.loadedLevelName == "Instructions") {
 			Application.LoadLevel("MainMenu");
 		} 
-		if(flask.gameObject.tag =="PlayFlask" && PlayerPrefsManager.GetIsFirstTime()==1){
+		if(flask.gameObject.tag =="PlayFlask" ){
 
 			Application.LoadLevel ("GAME");
 		}
-		if(flask.gameObject.tag =="PlayFlask" && PlayerPrefsManager.GetIsFirstTime()==0){
-			
-			Application.LoadLevel ("SetUserPitch");
-		}
+
 		if(flask.gameObject.tag =="BackButton" && Application.loadedLevelName == "Options" ){
 			Application.LoadLevel ("MainMenu");
 		}

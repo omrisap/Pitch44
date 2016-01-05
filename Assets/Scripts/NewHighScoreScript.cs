@@ -5,9 +5,14 @@ public class NewHighScoreScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Invoke ("VibarateNewHighScore", 1.4f);
-		Invoke ("SelfDestruct", 3.5f);
 
+		if (GameGrid.GetPoints () > PlayerPrefsManager.GetHighestScore ()) {
+			PlayerPrefsManager.SetHighestScore (GameGrid.GetPoints ());
+			Invoke ("VibarateNewHighScore", 1.4f);
+			Invoke ("SelfDestruct", 3.5f);
+		} else {
+			SelfDestruct();
+		}
 	}
 	void VibarateNewHighScore(){
 		VibrationManager.Vibrate(700);

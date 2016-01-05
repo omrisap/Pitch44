@@ -254,12 +254,6 @@ public class Ball : MonoBehaviour {
 
 
 	private void LoseTheGame(){
-		if (GameGrid.points > PlayerPrefsManager.GetHighestScore()) {
-
-			PlayerPrefsManager.SetHighestScore(GameGrid.points);
-
-		}
-
 		levleManager.LoadLevel("Leaderboard");
 
 

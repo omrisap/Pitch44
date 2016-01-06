@@ -5,6 +5,7 @@ public class selfDestruct : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
 		Invoke ("destruct", 8);
 	
 	}

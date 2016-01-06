@@ -5,7 +5,7 @@ public class PauseGameScreen : MonoBehaviour {
 	public GameObject pitchRecognitionControllerPreFab;
 	// Use this for initialization
 	void Start () {
-		if (PlayerPrefsManager.GetIsFirstTime () == 1)
+		if (PlayerPrefsManager.GetIsFirstTime () == 1 && this.gameObject.name=="PauseGameScreen (1)")
 			this.gameObject.SetActive (false);
 	}
 	

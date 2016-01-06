@@ -23,7 +23,7 @@ public class Spwaner : MonoBehaviour {
 			AudioListener.volume = 1 - AudioListener.volume;
 			Invoke ("ReturnSound", 3);
 		}
-	//	SpwanRandomForStart ();
+		SpwanRandomForStart ();
 	}
 	private void ReturnSound(){
 

@@ -5,6 +5,8 @@ public class GiveGravityScale : MonoBehaviour {
 	public Rigidbody2D myRigidbody2D;
 	void Start () {
 		myRigidbody2D.gravityScale = 0;
+		Time.timeScale = 2f;
+
 		Invoke ("GravityScale", 4);
 		Invoke ("InstanciatePitch4ForAnimationPrefab", 7);
 		Invoke ("SplashLoadLevel", 10.5f);

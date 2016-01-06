@@ -23,22 +23,28 @@ public class GameGrid : MonoBehaviour {
 	public PointsAnimation pointsAnim;
 	private SequenceSound sequenceSound;
 	private Queue < int > queueAnimations = new Queue < int >();
-
+	public bool isStopped=true;
 	int numOfSequensesForAnimation;
 	int score;
 
 	
 	void Start () {
+
 		sequenceSound = Resources.Load<SequenceSound> ("prefabs/SoundPrefabs/sequenceSound");
 		textPoints= GameObject.Find("PointsPanel").transform.GetChild(0).gameObject.GetComponent<Text>();
 		GameObject barInstance = GameObject.FindGameObjectWithTag ("Bars");
 		numberOfColoumns = barInstance.transform.childCount;
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
 		points = 0;
-		
+		if(PlayerPrefsManager.GetIsFirstTime()==1){
+			Invoke("disappearArrowes",10);
+		}
 	}
 
 	void Update(){
+		if(isStopped && PlayerPrefsManager.GetIsFirstTime()==0)
+		Time.timeScale=0;
+
 		if (Time.timeSinceLevelLoad < 2) {
 
 			points=0;
@@ -62,6 +68,11 @@ public class GameGrid : MonoBehaviour {
 		pointsNumOfSequanceCoefficient++;
 
 		}
+		
+	}
+
+	public void disappearArrowes(){
+		GameObject.Find ("ArrowsCanvas").SetActive (false);
 		
 	}
 

@@ -5,7 +5,8 @@ public class PauseGameScreen : MonoBehaviour {
 	public GameObject pitchRecognitionControllerPreFab;
 	// Use this for initialization
 	void Start () {
-	
+		if (PlayerPrefsManager.GetIsFirstTime () == 1)
+			this.gameObject.SetActive (false);
 	}
 	
 	// Update is called once per frame
@@ -19,9 +20,19 @@ public class PauseGameScreen : MonoBehaviour {
 
 		Instantiate (pitchRecognitionControllerPreFab);
 		this.gameObject.SetActive (false);
+		GameGrid grid = FindObjectOfType<GameGrid> ();
+		 grid.isStopped = false;
+		PlayerPrefsManager.SetIsFirstTime (1);
+		Invoke ("disappearArrowes", 10);
 
 
 	}
+
+	public void disappearArrowes(){
+		GameObject.Find ("ArrowsCanvas").SetActive (false);
+
+	}
+
 	public void BackToMenue(){
 		VibrationManager.Vibrate(40);
 		Time.timeScale=1;

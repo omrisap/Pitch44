@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BallForInstructions : MonoBehaviour {
 
-	public float middlePitch=220;
+	public float middlePitch=250;
 	private float speed=4;
 //	public GameObject MakeAHighVoice;
 //	public GameObject MakeALowVoice;

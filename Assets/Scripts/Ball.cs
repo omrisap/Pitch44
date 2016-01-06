@@ -34,7 +34,10 @@ public class Ball : MonoBehaviour {
 		if(!this.name.Contains("MainMenu"))
 		ballColor = GetComponent<SpriteRenderer>().color;
 		levleManager = FindObjectOfType<LevelManager>();
-		middlePitch=(PlayerPrefsManager.GetHighestPitch()+PlayerPrefsManager.GetLowhestPitch())/2;
+			if ((PlayerPrefsManager.GetHighestPitch () + PlayerPrefsManager.GetLowhestPitch ()) > 100)
+				middlePitch = (PlayerPrefsManager.GetHighestPitch () + PlayerPrefsManager.GetLowhestPitch ()) / 2;
+			else
+				middlePitch = 250;
 	}
 	void OnDestroy() {
 		if(!pauseDestory)

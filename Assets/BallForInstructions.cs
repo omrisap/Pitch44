@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BallForInstructions : MonoBehaviour {
 
-	public float middlePitch=250;
+	public float middlePitch;
 	private float speed=4;
 //	public GameObject MakeAHighVoice;
 //	public GameObject MakeALowVoice;
@@ -24,7 +24,9 @@ public class BallForInstructions : MonoBehaviour {
 	private bool countingDownRight=false;
 	private bool countingDownLeft=false;
 	private bool doneItOnes=false;
-
+	private int manPitch=200;
+	private int womanPitch=290;
+	private int childPitch=310;
 
 	public float StopWatch=1.5f;
 
@@ -44,6 +46,19 @@ public class BallForInstructions : MonoBehaviour {
 	private float clock ;
 
 	void Start () {
+		if (string.Compare (PlayerPrefsManager.GetGender (), "man") == 0) {
+			middlePitch = manPitch;
+			print("man");
+		} else if (string.Compare (PlayerPrefsManager.GetGender (), "woman") == 0) {
+			
+			middlePitch = womanPitch;
+			print("woman");
+			
+		} else if (string.Compare (PlayerPrefsManager.GetGender (), "child") == 0) {
+			middlePitch = childPitch;
+			print("child");
+			
+		}
 		 clock = timeBetweenMsg;
 		RightArrowAnim =  (GameObject)Resources.Load("Prefabs/Instructions/RightArrowAnim");
 		Instantiate(RightArrowAnim);

@@ -16,7 +16,7 @@ public class GetUserPitch : MonoBehaviour {
 	// Use this for initialization
 
 
-	
+
 	public void CheckHighestPitch(){
 	
 
@@ -53,7 +53,38 @@ public class GetUserPitch : MonoBehaviour {
 
 				
 	}
-	
+	public void setManGender(){
+		
+		PlayerPrefsManager.SetGender ("man");
+		if (PlayerPrefsManager.GetIsFirstTime () == 0 ) {
+			Application.LoadLevel("HowToPlayInterActive");
+			
+		}
+		else
+			Application.LoadLevel("MainMenu");
+
+
+	}
+	public void setWomanGender(){
+		
+		PlayerPrefsManager.SetGender ("woman");
+		if (PlayerPrefsManager.GetIsFirstTime () == 0 ) {
+			Application.LoadLevel("HowToPlayInterActive");
+			
+		}
+		else
+			Application.LoadLevel("MainMenu");
+	}
+	public void setChildGender(){
+		
+		PlayerPrefsManager.SetGender ("child");
+		if (PlayerPrefsManager.GetIsFirstTime () == 0 ) {
+			Application.LoadLevel("HowToPlayInterActive");
+			
+		}
+		else
+			Application.LoadLevel("MainMenu");
+	}
 	public void BackToDefauldt(){
 		PlayerPrefsManager.SetHighestPitch(380);
 		PlayerPrefsManager.SetLowhestPitch(120);

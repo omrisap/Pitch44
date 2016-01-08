@@ -8,12 +8,23 @@ public class PlayerPrefsManager : MonoBehaviour {
 	const string High_Score_Key = "Higest Score";	
 	const string Is_First_Time_Key="Is First Time";
 	const string Volume_Is_On="Volume Is On";
+	const string Gender="Gender";
+
 
 	public static void SetVolumeIsOn(int zeroIsTrue){
 		
 		PlayerPrefs.SetInt (Volume_Is_On,zeroIsTrue);
 	}
 	
+	public static string GetGender(){
+		
+		return PlayerPrefs.GetString (Gender);
+		
+	}
+	public static void SetGender(string playerGender){
+		
+		PlayerPrefs.SetString  (Gender,playerGender);
+	}
 	public static int GetVolumeIsOn(){
 		
 		return PlayerPrefs.GetInt(Volume_Is_On);

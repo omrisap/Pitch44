@@ -36,30 +36,91 @@ public class Spwaner : MonoBehaviour {
 		foreach (Transform origin in transform) {
 			float rand= Random.value;
 			if (rand>0.5){
+				int randColorAndEyes = Random.Range (0, 3);
 
 				Ball ball1 = (Ball) Instantiate (preFarbBall);
 				
-				ball1.GetComponent<SpriteRenderer> ().color = colorsArray[Random.Range(0,3)];
-				
+				ball1.GetComponent<SpriteRenderer> ().color = colorsArray[randColorAndEyes];
+				ball1.transform.GetChild (0).GetComponent<SpriteRenderer> ().sprite = eyes [randColorAndEyes];
+
 				ball1.transform.parent = origin.transform;
 				ball1.transform.position=new Vector2(origin.position.x,origin.position.y-17);
-				if (rand>0.75){
 
+
+
+				if (randColorAndEyes==0){
+					//Yellow Strech
+					
+					ball1.transform.GetChild (0).transform.localScale+=new Vector3 (0.1f,0.3f,0);
+					//Yellow position
+					
+					ball1.transform.GetChild (0).transform.position+=new Vector3 (0.1f,0f,0);
+					
+				}
+				if (randColorAndEyes==1){
+					//red Strech
+					
+					ball1.transform.GetChild (0).transform.localScale+=new Vector3 (0.05f,0.09f,0);
+					//red position
+					
+					ball1.transform.GetChild (0).transform.position+=new Vector3 (0f,-0.1f,0);
+					
+				}
+
+				if (rand>0.75){
+					randColorAndEyes = Random.Range (0, 3);
 					Ball ball2 = (Ball) Instantiate (preFarbBall);
 					
-					ball2.GetComponent<SpriteRenderer> ().color = colorsArray[Random.Range(0,3)];
-					
+					ball2.GetComponent<SpriteRenderer> ().color = colorsArray[randColorAndEyes];
+					ball2.transform.GetChild (0).GetComponent<SpriteRenderer> ().sprite = eyes [randColorAndEyes];
 					ball2.transform.parent = origin.transform;
 					ball2.transform.position=new Vector2(origin.position.x,origin.position.y-15);
+					if (randColorAndEyes==0){
+						//Yellow Strech
 						
+						ball2.transform.GetChild (0).transform.localScale+=new Vector3 (0.1f,0.3f,0);
+						//Yellow position
+						
+						ball2.transform.GetChild (0).transform.position+=new Vector3 (0.1f,0f,0);
+						
+					}
+					if (randColorAndEyes==1){
+						//red Strech
+						
+						ball2.transform.GetChild (0).transform.localScale+=new Vector3 (0.05f,0.09f,0);
+						//red position
+						
+						ball2.transform.GetChild (0).transform.position+=new Vector3 (0f,-0.1f,0);
+						
+					}
 					if (rand>0.88){
+						randColorAndEyes = Random.Range (0, 3);
 						Ball ball3 = (Ball) Instantiate (preFarbBall);
 						
-						ball3.GetComponent<SpriteRenderer> ().color = colorsArray[Random.Range(0,3)];
-						
+						ball3.GetComponent<SpriteRenderer> ().color = colorsArray[randColorAndEyes];
+						ball3.transform.GetChild (0).GetComponent<SpriteRenderer> ().sprite = eyes [randColorAndEyes];
 						ball3.transform.parent = origin.transform;
 
 						ball3.transform.position=new Vector2(origin.position.x,origin.position.y-13);
+
+						if (randColorAndEyes==0){
+							//Yellow Strech
+							
+							ball3.transform.GetChild (0).transform.localScale+=new Vector3 (0.1f,0.3f,0);
+							//Yellow position
+							
+							ball3.transform.GetChild (0).transform.position+=new Vector3 (0.1f,0f,0);
+							
+						}
+						if (randColorAndEyes==1){
+							//red Strech
+							
+							ball3.transform.GetChild (0).transform.localScale+=new Vector3 (0.05f,0.09f,0);
+							//red position
+							
+							ball3.transform.GetChild (0).transform.position+=new Vector3 (0f,-0.1f,0);
+							
+						}
 					}
 
 

@@ -14,7 +14,10 @@ public class FloorTrigger : MonoBehaviour {
 
 
 	}
-
+	public void quit(){
+		print ("quit??");
+		Application.Quit();
+	}
 	public void Mute(){
 		PlayerPrefsManager.SetVolumeIsOn(1-PlayerPrefsManager.GetVolumeIsOn());
 		
@@ -74,7 +77,7 @@ public class FloorTrigger : MonoBehaviour {
 			Application.LoadLevel ("Settings");
 		}
 		if(flask.gameObject.tag =="GoToSetPitch"){
-			Application.LoadLevel ("SetUserPitch");
+			Application.LoadLevel ("Gender");
 		}
 		if(flask.gameObject.tag =="LeaderBoard"){
 			Application.LoadLevel ("Leaderboard");

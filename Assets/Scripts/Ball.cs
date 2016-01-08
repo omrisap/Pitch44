@@ -19,6 +19,12 @@ public class Ball : MonoBehaviour {
 	private bool hasMadeHitSound=false;
 	private bool moveBallWithKeyboard=true;
 	private bool pauseDestory;
+	private int manPitch=200;
+	private int womanPitch=290;
+	private int childPitch=310;
+
+
+
 
 
 	SuctionSoundFX suctionSound;
@@ -32,18 +38,28 @@ public class Ball : MonoBehaviour {
 
 		rigidbody2d.velocity=new Vector3 (0,-2f -Time.timeSinceLevelLoad*0.002f ,0);
 		if(!this.name.Contains("MainMenu"))
-		ballColor = GetComponent<SpriteRenderer>().color;
+			ballColor = GetComponent<SpriteRenderer>().color;
 		levleManager = FindObjectOfType<LevelManager>();
-			if ((PlayerPrefsManager.GetHighestPitch () + PlayerPrefsManager.GetLowhestPitch ()) > 100)
-				middlePitch = (PlayerPrefsManager.GetHighestPitch () + PlayerPrefsManager.GetLowhestPitch ()) / 2;
-			else
-				middlePitch = 250;
+			if (string.Compare (PlayerPrefsManager.GetGender (), "man") == 0) {
+			middlePitch = manPitch;
+			print("man");
+		} else if (string.Compare (PlayerPrefsManager.GetGender (), "woman") == 0) {
+
+			middlePitch = womanPitch;
+			print("woman");
+
+		} else if (string.Compare (PlayerPrefsManager.GetGender (), "child") == 0) {
+			middlePitch = childPitch;
+			print("child");
+
+		}
 	}
 	void OnDestroy() {
 		if(!pauseDestory)
 		GameGrid.destroyd++;
 	}
 	void Update () {
+		print (middlePitch);
 		if (isCollided == false) {
 			float WidthOfBar = bar.GetComponent<BoxCollider2D> ().size.x;
 

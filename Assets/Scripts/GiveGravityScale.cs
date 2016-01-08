@@ -9,7 +9,7 @@ public class GiveGravityScale : MonoBehaviour {
 
 		Invoke ("GravityScale", 4);
 		Invoke ("InstanciatePitch4ForAnimationPrefab", 7);
-		Invoke ("SplashLoadLevel", 10.5f);
+		Invoke ("GenderLoadLevel", 10.5f);
 		Invoke ("InstanciateBrokenGlass", 9.2f);
 
 	}
@@ -31,10 +31,10 @@ public class GiveGravityScale : MonoBehaviour {
 			Instantiate (go);
 
 	}
-	void SplashLoadLevel (){
+	void GenderLoadLevel (){
 		if (PlayerPrefsManager.GetIsFirstTime () == 0) {
 
-			Application.LoadLevel ("HowToPlayInterActive");
+			Application.LoadLevel ("Gender");
 		
 		}
 		else

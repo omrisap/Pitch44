@@ -8,6 +8,7 @@ public class PauseGameScreen : MonoBehaviour {
 		if (PlayerPrefsManager.GetIsFirstTime () == 1 && this.gameObject.name=="PauseGameScreen (1)")
 			this.gameObject.SetActive (false);
 	}
+
 	
 	// Update is called once per frame
 	void Update () {

@@ -36,7 +36,19 @@ public class ScrollManager : MonoBehaviour {
 			Instantiate(newHighScore);
 		}
 	}
+	public void moveCamera(int place){
+		GameObject grid = GameObject.Find ("Grid");
+		Transform child= grid.gameObject.transform.GetChild(13);
+		Vector3 childWorldPos= camera.ScreenToWorldPoint(child.transform.position);
+		//print (childWorldPos);
 
+		//Rigidbody2D myCameraRigidbody2D= camera.GetComponent<Rigidbody2D>();
+		print ("place  " + place);
+		//myCameraRigidbody2D.transform.position = child;
+
+
+		
+	}
 	void Update(){
 
 		if (Input.touchCount == 1) {
@@ -85,7 +97,7 @@ public class ScrollManager : MonoBehaviour {
 		numberOfEntries = grid.transform.childCount;
 
 		Rigidbody2D myCameraRigidbody2D= camera.GetComponent<Rigidbody2D>();
-		camera.transform.position = new Vector3 (camera.transform.position.x, Mathf.Clamp (camera.gameObject.transform.position.y,(numberOfEntries-4)*-0.25f , 0), 0); 
+		camera.transform.position = new Vector3 (camera.transform.position.x, Mathf.Clamp (camera.gameObject.transform.position.y,(numberOfEntries-4.5f)*-0.28f , 0), 0); 
 
 		myCameraRigidbody2D.velocity=new Vector3 (0,- globalSlideMagnitudeY*10, 0);
 //		header.transform.position = myCameraRigidbody2D.transform.position + new Vector3 (1.4f, 0.76f,0);

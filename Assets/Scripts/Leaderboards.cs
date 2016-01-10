@@ -9,6 +9,7 @@ using Facebook;
 //the prefab we are going to instantiate 
 public class Leaderboards : MonoBehaviour
 {
+	private 	int yourPlace=0;
 	private bool caledToGetLeaderBoard=false;
 	
 	public GameObject leaderboardEntryPrefab;
@@ -30,7 +31,8 @@ public class Leaderboards : MonoBehaviour
 	public void GetLeaderboard()
 	{
 
-
+		int yourPlace=0,counter=0;
+	
 		if (caledToGetLeaderBoard == false) {
 		
 			PostScores ("", PlayerPrefsManager.GetHighestScore ());
@@ -48,13 +50,13 @@ public class Leaderboards : MonoBehaviour
 			//identified by the short code added when setting up the 
 			//Leaderboard in the Gamesparks portal
 			//SetEntryCount() will define how many entries you want to pull in one go
-			new LeaderboardDataRequest_HighscoreLeaderboard ().SetEntryCount (10).Send ((response) => {
+			new LeaderboardDataRequest_HighscoreLeaderboard ().SetEntryCount (900).Send ((response) => {
 
 				//what we will do with the information given by GameSparks
 		
 		
 					foreach (var entry in response.Data) {
-
+					counter++;
 					//only children of the NGUI grid will be added 
 					//to the grid. We make new objects with our
 					//LeaderboardEntry script and add them as 
@@ -69,8 +71,16 @@ public class Leaderboards : MonoBehaviour
 					//to the leaderboard we are pulling from
 							go.GetComponent<LeaderboardEntry> ().scoreString = entry.GetNumberValue ("Score").ToString ();
 							go.GetComponent<LeaderboardEntry> ().facebookID = entry.ExternalIds.GetString ("FB");
+							
 				
-					//adds the gameobject to the list of entries
+							
+						if(FB.UserId.ToString().Equals(entry.ExternalIds.GetString ("FB"))){
+							yourPlace=counter;
+							GameObject.Find("Scroll manager").GetComponent<ScrollManager>().moveCamera(yourPlace);
+							}
+
+					
+					       //adds the gameobject to the list of entries
 							entries.Add (go);
 				
 					//repositions the new object so it isn't stacked                                //over existing objects
@@ -79,13 +89,17 @@ public class Leaderboards : MonoBehaviour
 
 						
 				}
-					
+
 			});
 			caledToGetLeaderBoard = true;
-
+			GameObject.Find("TextTocheck").GetComponent<Text>().text=FB.UserId + "        " + yourPlace;
+			print ("your place   " + yourPlace.ToString());
 			StartCoroutine(	getFBPicture(FB.UserId));
+		
 		}
+
 	}
+
 
 
 
@@ -93,6 +107,7 @@ public class Leaderboards : MonoBehaviour
 	{
 		LeaderboardEntry leaderboardEntry=GameObject.Find("LeaderboardEntry").GetComponent<LeaderboardEntry>();
 		leaderboardEntry.getFBPicture();
+		print ("leaderboardEntry   " + leaderboardEntry.rank.ToString ());
 		var www = new WWW("http://graph.facebook.com/" + facebookID + "/picture?type=square");
 		
 		yield return www;

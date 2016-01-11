@@ -37,14 +37,19 @@ public class ScrollManager : MonoBehaviour {
 		}
 	}
 	public void moveCamera(int place){
-		GameObject grid = GameObject.Find ("Grid");
-		Transform child= grid.gameObject.transform.GetChild(13);
-		Vector3 childWorldPos= camera.ScreenToWorldPoint(child.transform.position);
-		//print (childWorldPos);
-
-		//Rigidbody2D myCameraRigidbody2D= camera.GetComponent<Rigidbody2D>();
 		print ("place  " + place);
-		//myCameraRigidbody2D.transform.position = child;
+		GameObject grid = GameObject.Find ("Grid");
+		Transform child= grid.gameObject.transform.GetChild(place-1);
+
+		Vector3 childWorldPos= child.transform.position;
+		print (childWorldPos.y);
+
+
+
+		Rigidbody2D myCameraRigidbody2D= camera.GetComponent<Rigidbody2D>();
+		print (childWorldPos.y);
+
+		myCameraRigidbody2D.transform.position = new Vector3 (0f,childWorldPos.y+0.6495f-0.27778f,0f);
 
 
 		

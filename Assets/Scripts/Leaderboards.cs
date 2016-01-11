@@ -10,6 +10,7 @@ using Facebook;
 public class Leaderboards : MonoBehaviour
 {
 	private 	int yourPlace=0;
+	bool hasntCalled=true;
 	private bool caledToGetLeaderBoard=false;
 	
 	public GameObject leaderboardEntryPrefab;
@@ -31,7 +32,7 @@ public class Leaderboards : MonoBehaviour
 	public void GetLeaderboard()
 	{
 
-		int yourPlace=0,counter=0;
+		int counter=0;
 	
 		if (caledToGetLeaderBoard == false) {
 		
@@ -74,9 +75,10 @@ public class Leaderboards : MonoBehaviour
 							
 				
 							
-						if(FB.UserId.ToString().Equals(entry.ExternalIds.GetString ("FB"))){
-							yourPlace=counter;
-							GameObject.Find("Scroll manager").GetComponent<ScrollManager>().moveCamera(yourPlace);
+							if(FB.UserId.ToString().Equals(entry.ExternalIds.GetString ("FB"))){
+							
+								changeYourPlace(counter);
+								Invoke("toCamera",1);
 							}
 
 					
@@ -92,15 +94,22 @@ public class Leaderboards : MonoBehaviour
 
 			});
 			caledToGetLeaderBoard = true;
-			GameObject.Find("TextTocheck").GetComponent<Text>().text=FB.UserId + "        " + yourPlace;
-			print ("your place   " + yourPlace.ToString());
+		
 			StartCoroutine(	getFBPicture(FB.UserId));
 		
 		}
 
 	}
+	private void toCamera(){
+		GameObject.Find ("Scroll manager").GetComponent<ScrollManager> ().moveCamera (yourPlace);
 
+	}
 
+	private void changeYourPlace(int counter){
+
+		yourPlace = counter;
+		print ("yourPlace " + yourPlace);
+	}
 
 
 	public IEnumerator getFBPicture(string facebookID)
